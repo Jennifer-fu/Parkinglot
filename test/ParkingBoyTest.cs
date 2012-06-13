@@ -1,15 +1,23 @@
 ﻿using NUnit.Framework;
+using ParkingLot.src;
 
 namespace ParkingLot
 {
     [TestFixture]
     public class ParkingBoyTest
     {
+        private ParkingBoy parkingBoy;
+
+        [SetUp]
+        public void SetUp()
+        {
+            parkingBoy = new ParkingBoy(new AnyNotFull());
+        }
+
         [Test]
         public void should_return_ticket_when_park_car_to_parking_boy()
         {
             var parkinglot = new Parkinglot(1);
-            var parkingBoy = new ParkingBoy();
             parkingBoy.Manage(parkinglot);
 
             var ticket = parkingBoy.Park(new Car());
@@ -20,7 +28,6 @@ namespace ParkingLot
         [Test]
         public void should_return_null_if_all_managed_parkinglot_are_full()
         {
-            var parkingBoy = new ParkingBoy();
             parkingBoy.Manage(new Parkinglot(1));
             parkingBoy.Manage(new Parkinglot(1));
             parkingBoy.Park(new Car());
@@ -33,7 +40,6 @@ namespace ParkingLot
         [Test]
         public void should_return_car_if_use_right_ticket()
         {
-            var parkingBoy = new ParkingBoy();
             parkingBoy.Manage(new Parkinglot(1));
             var car = new Car();
             var ticket = parkingBoy.Park(car);
@@ -45,7 +51,6 @@ namespace ParkingLot
         [Test]
         public void should_not_pick_up_car_if_use_wrong_ticket()
         {
-            var parkingBoy = new ParkingBoy();
             parkingBoy.Manage(new Parkinglot(1));
             parkingBoy.Park(new Car());
             var car = parkingBoy.PickUp(new Ticket());

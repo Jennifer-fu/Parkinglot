@@ -1,14 +1,22 @@
 ﻿using NUnit.Framework;
+using ParkingLot.src;
 
 namespace ParkingLot
 {
     [TestFixture]
     public class SmartBoyTest
     {
+        private ParkingBoy smartBoy;
+
+        [SetUp]
+        public void SetUp()
+        {
+            smartBoy = new ParkingBoy(new MaxAvailablePosition());
+        }
+
         [Test]
         public void should_park_car_to_parking_lot_which_has_most_empty_positions()
         {
-            var smartBoy = new SmartBoy();
             var parkinglot1 = new Parkinglot(1);
             smartBoy.Manage(parkinglot1);
             var parkinglot2 = new Parkinglot(2);
@@ -23,7 +31,6 @@ namespace ParkingLot
         [Test]
         public void should_return_null_if_all_the_parkinglot_has_no_avalibale_positions()
         {
-            var smartBoy = new SmartBoy();
             var parkinglot1 = new Parkinglot(0);
             smartBoy.Manage(parkinglot1);
             var parkinglot2 = new Parkinglot(0);
@@ -36,7 +43,6 @@ namespace ParkingLot
         [Test]
         public void should_pick_up_cat_with_right_ticket()
         {
-            var smartBoy = new SmartBoy();
             var parkinglot1 = new Parkinglot(1);
             smartBoy.Manage(parkinglot1);
             var car = new Car();
@@ -49,7 +55,6 @@ namespace ParkingLot
         [Test]
         public void should_return_null_if_use_wrong_ticket()
         {
-            var smartBoy = new SmartBoy();
             var parkinglot1 = new Parkinglot(1);
             smartBoy.Manage(parkinglot1);
             var car = new Car();
@@ -58,6 +63,5 @@ namespace ParkingLot
 
             Assert.IsNull(pickCar);
         }
-
     }
 }

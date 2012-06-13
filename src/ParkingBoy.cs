@@ -1,12 +1,20 @@
 using System.Collections.Generic;
 using System.Linq;
+using ParkingLot.src;
 
 namespace ParkingLot
 {
     public class ParkingBoy
     {
         internal readonly List<Parkinglot> parkinglots = new List<Parkinglot>();
-        
+
+        private ParkinglotChooser chooser;
+
+        public ParkingBoy(ParkinglotChooser chooser)
+        {
+            this.chooser = chooser;
+        }
+
         public void Manage(Parkinglot parkinglot)
         {
             parkinglots.Add(parkinglot);
@@ -14,18 +22,8 @@ namespace ParkingLot
 
         public Ticket Park(Car car)
         {
-            var parkinglot = FindParkinglot();
+            var parkinglot = chooser.Choose(parkinglots);
             return parkinglot==null?null:parkinglot.Park(car);
-        }
-
-        protected Parkinglot FindParkinglot()
-        {
-            Parkinglot choosedParkinglot = null;
-            foreach (var parkinglot in parkinglots)
-            {
-                if (parkinglot.IsNotFull()) choosedParkinglot = parkinglot;
-            }
-            return choosedParkinglot;
         }
 
         public Car PickUp(Ticket ticket)
