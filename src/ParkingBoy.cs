@@ -14,7 +14,18 @@ namespace ParkingLot
 
         public Ticket Park(Car car)
         {
-            return parkinglots.Select(parkinglot => parkinglot.Park(car)).FirstOrDefault(ticket => ticket != null);
+            var parkinglot = FindParkinglot();
+            return parkinglot==null?null:parkinglot.Park(car);
+        }
+
+        private Parkinglot FindParkinglot()
+        {
+            Parkinglot choosedParkinglot = null;
+            foreach (var parkinglot in parkinglots)
+            {
+                if (parkinglot.IsNotFull()) choosedParkinglot = parkinglot;
+            }
+            return choosedParkinglot;
         }
 
         public Car PickUp(Ticket ticket)

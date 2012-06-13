@@ -17,8 +17,6 @@ namespace ParkingLot
 
         public Ticket Park(Car car)
         {
-            if (Capacity == carList.Count)
-                return null;
             var ticket = new Ticket();
             carList.Add(ticket, car);
             return ticket;
@@ -46,6 +44,11 @@ namespace ParkingLot
         {
             if (Capacity == 0) return 0;
             return Convert.ToDouble(AvailablePosition()) / Capacity;
+        }
+
+        public bool IsNotFull()
+        {
+            return AvailablePosition() > 0;
         }
     }
 }

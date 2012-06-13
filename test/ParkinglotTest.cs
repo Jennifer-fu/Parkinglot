@@ -14,18 +14,6 @@ namespace ParkingLot
 
             Assert.IsNotNull(ticket);
         }
-        
-        [Test]
-        public void should_return_null_if_parking_lot_capacity_is_null()
-        {
-            var parkinglot = new Parkinglot(1);
-            parkinglot.Park(new Car());
-            
-            var ticket = parkinglot.Park(new Car());
-            
-            Assert.IsNull(ticket);
-        }
-
 
         [Test]
         public void should_return_car_when_use_right_ticket()
