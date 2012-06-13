@@ -31,10 +31,6 @@ namespace ParkingLot
             return car;
         }
 
-        public static void Main(string[] args)
-        {
-        }
-
         public int AvailablePosition()
         {
             return Capacity - carList.Count;
@@ -49,6 +45,10 @@ namespace ParkingLot
         public bool IsNotFull()
         {
             return AvailablePosition() > 0;
+        }
+
+        public static void Main(string[] args)
+        {
         }
     }
 }

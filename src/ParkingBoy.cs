@@ -18,7 +18,7 @@ namespace ParkingLot
             return parkinglot==null?null:parkinglot.Park(car);
         }
 
-        private Parkinglot FindParkinglot()
+        protected Parkinglot FindParkinglot()
         {
             Parkinglot choosedParkinglot = null;
             foreach (var parkinglot in parkinglots)

@@ -5,13 +5,7 @@ namespace ParkingLot.src
 {
     public class SmarterBoy : ParkingBoy
     {
-        public Ticket Park(Car car)
-        {
-            var parkinglot = FindParkinglot();
-            return parkinglot != null ? parkinglot.Park(car) : null;
-        }
-
-        private Parkinglot FindParkinglot()
+        protected Parkinglot FindParkinglot()
         {
             double maxAvailableRate = 0;
             Parkinglot maxParkingLot = null;
