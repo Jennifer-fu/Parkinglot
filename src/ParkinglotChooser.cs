@@ -1,6 +1,6 @@
 using System.Collections.Generic;
 
-namespace ParkingLot.src
+namespace ParkingLot
 {
     public interface ParkinglotChooser
     {

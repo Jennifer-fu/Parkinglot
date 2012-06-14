@@ -3,7 +3,7 @@ using System.Collections.Generic;
 
 namespace ParkingLot
 {
-    public class Parkinglot
+    public class Parkinglot:Parker
     {
         private readonly Dictionary<Ticket, Car> carList;
 

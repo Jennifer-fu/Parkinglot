@@ -1,7 +1,7 @@
 ﻿using System.Collections.Generic;
 using System.Linq;
 
-namespace ParkingLot.src
+namespace ParkingLot
 {
     public class MaxAvailableRate:ParkinglotChooser
     {

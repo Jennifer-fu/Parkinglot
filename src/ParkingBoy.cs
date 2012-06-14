@@ -1,10 +1,9 @@
 using System.Collections.Generic;
 using System.Linq;
-using ParkingLot.src;
 
 namespace ParkingLot
 {
-    public class ParkingBoy
+    public class ParkingBoy:Parker
     {
         internal readonly List<Parkinglot> parkinglots = new List<Parkinglot>();
 
@@ -23,7 +22,7 @@ namespace ParkingLot
         public Ticket Park(Car car)
         {
             var parkinglot = chooser.Choose(parkinglots);
-            return parkinglot==null?null:parkinglot.Park(car);
+            return parkinglot == null ? null : parkinglot.Park(car);
         }
 
         public Car PickUp(Ticket ticket)
