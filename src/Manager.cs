@@ -16,5 +16,10 @@ namespace ParkingLot
         {
             return parkers.Select(parker => parker.Park(car)).FirstOrDefault(ticket => ticket != null);
         }
+
+        public Car PickUp(Ticket ticket)
+        {
+            return parkers.Select(parker => parker.PickUp(ticket)).FirstOrDefault(car => car != null);
+        }
     }
 }

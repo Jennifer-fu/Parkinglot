@@ -48,5 +48,37 @@ namespace ParkingLot
 
             Assert.IsNotNull(ticket);
         }
+
+        [Test]
+        public void manager_can_pick_up_car_with_right_ticket()
+        {
+            var parkingBoy = new ParkingBoy(new AnyNotFull());
+            var parkinglot = new Parkinglot(1);
+            parkingBoy.Manage(parkinglot);
+
+            manager.Manage(parkingBoy);
+            manager.Manage(new Parkinglot(2));
+            var car = new Car();
+            var ticket = manager.Park(car);
+            var pickCar = manager.PickUp(ticket);
+
+            Assert.AreSame(car,pickCar);
+        }
+
+        [Test]
+        public void should_not_pick_up_car_with_wrong_ticket()
+        {
+            var parkingBoy = new ParkingBoy(new AnyNotFull());
+            var parkinglot = new Parkinglot(1);
+            parkingBoy.Manage(parkinglot);
+
+            manager.Manage(parkingBoy);
+            manager.Manage(new Parkinglot(2));
+            var car = new Car();
+            manager.Park(car);
+            var pickCar = manager.PickUp(new Ticket());
+
+            Assert.IsNull(pickCar);
+        }
     }
 }

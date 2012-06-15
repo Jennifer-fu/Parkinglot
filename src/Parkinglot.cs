@@ -17,6 +17,7 @@ namespace ParkingLot
 
         public Ticket Park(Car car)
         {
+            if (!IsNotFull()) return null;
             var ticket = new Ticket();
             carList.Add(ticket, car);
             return ticket;
