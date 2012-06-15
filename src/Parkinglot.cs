@@ -3,7 +3,7 @@ using System.Collections.Generic;
 
 namespace ParkingLot
 {
-    public class Parkinglot:Parker
+    public class Parkinglot : Parker
     {
         private readonly Dictionary<Ticket, Car> carList;
 
@@ -40,7 +40,7 @@ namespace ParkingLot
         public double AvailablePositionRate()
         {
             if (Capacity == 0) return 0;
-            return Convert.ToDouble(AvailablePosition()) / Capacity;
+            return Convert.ToDouble(AvailablePosition())/Capacity;
         }
 
         public bool IsNotFull()

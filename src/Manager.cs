@@ -3,14 +3,9 @@ using System.Linq;
 
 namespace ParkingLot
 {
-    public class Manager
+    public class Manager : Parker
     {
-        List<Parker> parkers = new List<Parker>();
-
-        public void Manage(Parker parker)
-        {
-            parkers.Add(parker);   
-        }
+        private readonly List<Parker> parkers = new List<Parker>();
 
         public Ticket Park(Car car)
         {
@@ -20,6 +15,11 @@ namespace ParkingLot
         public Car PickUp(Ticket ticket)
         {
             return parkers.Select(parker => parker.PickUp(ticket)).FirstOrDefault(car => car != null);
+        }
+
+        public void Manage(Parker parker)
+        {
+            parkers.Add(parker);
         }
     }
 }

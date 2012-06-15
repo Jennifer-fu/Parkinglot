@@ -3,7 +3,7 @@ using System.Linq;
 
 namespace ParkingLot
 {
-    public class ParkingBoy:Parker
+    public class ParkingBoy : Parker
     {
         internal readonly List<Parkinglot> parkinglots = new List<Parkinglot>();
 
