@@ -4,5 +4,6 @@
     {
         Ticket Park(Car car);
         Car PickUp(Ticket ticket);
+        string Print(int depth);
     }
 }

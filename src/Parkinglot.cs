@@ -51,5 +51,15 @@ namespace ParkingLot
         public static void Main(string[] args)
         {
         }
+
+        public string Print(int depth)
+        {
+            string tabString = "";
+            for (int i = 0; i < depth; i++)
+            {
+                tabString += "\t";
+            }
+            return String.Format("{0}parkinglot: {1}\r\n", tabString, AvailablePosition());
+        }
     }
 }

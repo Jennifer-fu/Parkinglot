@@ -1,5 +1,7 @@
+using System;
 using System.Collections.Generic;
 using System.Linq;
+using System.Text;
 
 namespace ParkingLot
 {
@@ -20,6 +22,24 @@ namespace ParkingLot
         public void Manage(Parker parker)
         {
             parkers.Add(parker);
+        }
+
+        public string Print(int depth)
+        {
+            var report = new StringBuilder();
+            string tabString = "";
+            for (int i = 0; i < depth; i++)
+            {
+                tabString += "\t";
+            }
+         
+            report.AppendLine(String.Format("{0}manager:",tabString));
+            
+            foreach (var parker in parkers)
+            {
+                report.Append(parker.Print(depth+1));
+            }
+            return report.ToString();
         }
     }
 }
