@@ -22,7 +22,7 @@ namespace ParkingLot
             var report = new StringBuilder();
             report.AppendLine(String.Format("{0}parkingboy:", IndentString(indentNumber)));
 
-            foreach (var parkinglot in parkingBoy.parkinglots)
+            foreach (var parkinglot in parkingBoy.GetParkinglots())
             {
                 report.Append(parkinglot.Print(new Reporter(indentNumber + 1)));
             }
@@ -34,7 +34,7 @@ namespace ParkingLot
             var report = new StringBuilder();
             report.AppendLine(String.Format("{0}manager:", IndentString(indentNumber)));
 
-            foreach (var parker in manager.parkers)
+            foreach (var parker in manager.GetParkers())
             {
                 report.Append(parker.Print(new Reporter(indentNumber + 1)));
             }

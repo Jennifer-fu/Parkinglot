@@ -5,7 +5,7 @@ namespace ParkingLot
 {
     public class Manager : Parker
     {
-        internal readonly List<Parker> parkers = new List<Parker>();
+        private List<Parker> parkers = new List<Parker>();
 
         public Ticket Park(Car car)
         {
@@ -25,6 +25,11 @@ namespace ParkingLot
         public string Print(Reporter reporter)
         {
             return reporter.Print(this);
+        }
+
+        public List<Parker> GetParkers()
+        {
+            return parkers;
         }
     }
 }

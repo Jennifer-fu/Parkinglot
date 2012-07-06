@@ -5,7 +5,7 @@ namespace ParkingLot
 {
     public class ParkingBoy : Parker
     {
-        internal readonly List<Parkinglot> parkinglots = new List<Parkinglot>();
+        private List<Parkinglot> parkinglots = new List<Parkinglot>();
 
         private ParkinglotChooser chooser;
 
@@ -33,6 +33,11 @@ namespace ParkingLot
         public string Print(Reporter reporter)
         {
             return reporter.Print(this);
+        }
+
+        public List<Parkinglot> GetParkinglots()
+        {
+            return parkinglots;
         }
     }
 }
