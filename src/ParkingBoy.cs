@@ -1,7 +1,5 @@
-using System;
 using System.Collections.Generic;
 using System.Linq;
-using System.Text;
 
 namespace ParkingLot
 {
@@ -32,21 +30,9 @@ namespace ParkingLot
             return parkinglots.Select(parkinglot => parkinglot.PickUp(ticket)).FirstOrDefault(car => car != null);
         }
 
-        public string Print(int depth)
+        public string Print(Reporter reporter)
         {
-            var report = new StringBuilder();
-            string tabString = "";
-            for (int i = 0; i < depth; i++)
-            {
-                tabString += "\t";
-            }
-         
-            report.AppendLine(String.Format("{0}parkingboy:",tabString));
-            foreach (var parkinglot in parkinglots)
-            {
-                report.Append(parkinglot.Print(depth+1));
-            }
-            return report.ToString();
+            return reporter.PrintParkingBoy(this);
         }
     }
 }

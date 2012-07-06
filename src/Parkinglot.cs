@@ -52,14 +52,9 @@ namespace ParkingLot
         {
         }
 
-        public string Print(int depth)
+        public string Print(Reporter reporter)
         {
-            string tabString = "";
-            for (int i = 0; i < depth; i++)
-            {
-                tabString += "\t";
-            }
-            return String.Format("{0}parkinglot: {1}\r\n", tabString, AvailablePosition());
+            return reporter.PrintParkinglot(this);
         }
     }
 }
