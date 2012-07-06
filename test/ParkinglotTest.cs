@@ -15,14 +15,12 @@ namespace ParkingLot
             Assert.IsNotNull(ticket);
         }
 
-        [Test]
+        [Test, ExpectedException(typeof(ParkinglotFullException))]
         public void should_return_null_when_parkinglot_is_full()
         {
             var parkinglot = new Parkinglot(1);
             parkinglot.Park(new Car());
-            var ticket = parkinglot.Park(new Car());
-
-            Assert.IsNull(ticket);
+            parkinglot.Park(new Car());
         }
 
         [Test]
@@ -37,19 +35,17 @@ namespace ParkingLot
             Assert.AreSame(pickedCar,car);
         }
 
-        [Test]
+        [Test,ExpectedException(typeof(WrongTicketException))]
         public void should_not_pick_up_if_provide_a_wrong_ticket()
         {
             var parkinglot = new Parkinglot(1);
             var car = new Car();
             parkinglot.Park(car);
 
-            var pickedCar = parkinglot.PickUp(new Ticket());
-
-            Assert.IsNull(pickedCar);
+            parkinglot.PickUp(new Ticket());
         }
         
-        [Test]
+        [Test,ExpectedException(typeof(WrongTicketException))]
         public void should_return_null_when_pick_up_car_twice()
         {
             var parkinglot = new Parkinglot(1);
@@ -57,9 +53,7 @@ namespace ParkingLot
             var ticket = parkinglot.Park(car);
 
             parkinglot.PickUp(ticket);
-            var pickedCar = parkinglot.PickUp(ticket);
-
-            Assert.IsNull(pickedCar);
+            parkinglot.PickUp(ticket);
         }
 
     }

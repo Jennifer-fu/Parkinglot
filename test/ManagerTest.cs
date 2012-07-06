@@ -65,7 +65,7 @@ namespace ParkingLot
             Assert.AreSame(car,pickCar);
         }
 
-        [Test]
+        [Test,ExpectedException(typeof(WrongTicketException))]
         public void should_not_pick_up_car_with_wrong_ticket()
         {
             var parkingBoy = new ParkingBoy(new AnyNotFull());
@@ -76,9 +76,7 @@ namespace ParkingLot
             manager.Manage(new Parkinglot(2));
             var car = new Car();
             manager.Park(car);
-            var pickCar = manager.PickUp(new Ticket());
-
-            Assert.IsNull(pickCar);
+            manager.PickUp(new Ticket());
         }
     }
 }

@@ -47,14 +47,12 @@ namespace ParkingLot
             Assert.AreSame(car,pickCar);
         }
 
-        [Test]
+        [Test, ExpectedException(typeof(WrongTicketException))]
         public void should_not_pick_up_car_if_use_wrong_ticket()
         {
             parkingBoy.Manage(new Parkinglot(1));
             parkingBoy.Park(new Car());
-            var car = parkingBoy.PickUp(new Ticket());
-
-            Assert.IsNull(car);
+            parkingBoy.PickUp(new Ticket());
         }
     }
 }

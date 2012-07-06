@@ -17,7 +17,7 @@ namespace ParkingLot
 
         public Ticket Park(Car car)
         {
-            if (!IsNotFull()) return null;
+            if (!IsNotFull()) throw new ParkinglotFullException();
             var ticket = new Ticket();
             carList.Add(ticket, car);
             return ticket;
@@ -26,7 +26,7 @@ namespace ParkingLot
         public Car PickUp(Ticket ticket)
         {
             if (!carList.ContainsKey(ticket))
-                return null;
+                throw new WrongTicketException();
             var car = carList[ticket];
             carList.Remove(ticket);
             return car;
