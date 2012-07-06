@@ -54,7 +54,7 @@ namespace ParkingLot
 
         public string Print(Reporter reporter)
         {
-            return reporter.PrintParkinglot(this);
+            return reporter.Print(this);
         }
     }
 }

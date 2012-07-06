@@ -32,7 +32,7 @@ namespace ParkingLot
 
         public string Print(Reporter reporter)
         {
-            return reporter.PrintParkingBoy(this);
+            return reporter.Print(this);
         }
     }
 }

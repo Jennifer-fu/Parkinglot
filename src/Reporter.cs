@@ -5,43 +5,43 @@ namespace ParkingLot
 {
     public class Reporter
     {
-        private int depth;
+        private int indentNumber;
 
-        public Reporter(int depth)
+        public Reporter(int indentNumber)
         {
-            this.depth = depth;
+            this.indentNumber = indentNumber;
         }
 
-        public string PrintParkinglot(Parkinglot parkinglot)
+        public string Print(Parkinglot parkinglot)
         {
-            return String.Format("{0}parkinglot: {1}\r\n", TabString(depth), parkinglot.AvailablePosition());
+            return String.Format("{0}parkinglot: {1}\r\n", IndentString(indentNumber), parkinglot.AvailablePosition());
         }
 
-        public string PrintParkingBoy(ParkingBoy parkingBoy)
+        public string Print(ParkingBoy parkingBoy)
         {
             var report = new StringBuilder();
-            report.AppendLine(String.Format("{0}parkingboy:", TabString(depth)));
+            report.AppendLine(String.Format("{0}parkingboy:", IndentString(indentNumber)));
 
             foreach (var parkinglot in parkingBoy.parkinglots)
             {
-                report.Append(parkinglot.Print(new Reporter(depth + 1)));
+                report.Append(parkinglot.Print(new Reporter(indentNumber + 1)));
             }
             return report.ToString();
         }
 
-        public string PrintParkingManager(Manager manager)
+        public string Print(Manager manager)
         {
             var report = new StringBuilder();
-            report.AppendLine(String.Format("{0}manager:", TabString(depth)));
+            report.AppendLine(String.Format("{0}manager:", IndentString(indentNumber)));
 
             foreach (var parker in manager.parkers)
             {
-                report.Append(parker.Print(new Reporter(depth + 1)));
+                report.Append(parker.Print(new Reporter(indentNumber + 1)));
             }
             return report.ToString();
         }
 
-        private string TabString(int depth)
+        private string IndentString(int depth)
         {
             string tabString = "";
             for (int i = 0; i < depth; i++)
