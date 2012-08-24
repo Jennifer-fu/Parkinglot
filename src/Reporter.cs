@@ -5,24 +5,14 @@ namespace ParkingLot
 {
     public class Reporter
     {
-        private int indentNumber;
 
         public Reporter(int indentNumber)
         {
-            this.indentNumber = indentNumber;
+            IndentNumber = indentNumber;
         }
 
-        public string Print(ParkingBoy parkingBoy)
-        {
-            var report = new StringBuilder();
-            report.AppendLine(String.Format("{0}parkingboy:", Indent()));
+        public int IndentNumber { get; private set; }
 
-            foreach (var parkinglot in parkingBoy.GetParkinglots())
-            {
-                report.Append(parkinglot.Print(new Reporter(indentNumber + 1)));
-            }
-            return report.ToString();
-        }
 
         public string Print(Manager manager)
         {
@@ -31,7 +21,7 @@ namespace ParkingLot
 
             foreach (var parker in manager.GetParkers())
             {
-                report.Append(parker.Print(new Reporter(indentNumber + 1)));
+                report.Append(parker.Print(new Reporter(IndentNumber + 1)));
             }
             return report.ToString();
         }
@@ -39,7 +29,7 @@ namespace ParkingLot
         public string Indent()
         {
             string tabString = "";
-            for (int i = 0; i < indentNumber; i++)
+            for (int i = 0; i < IndentNumber; i++)
             {
                 tabString += "\t";
             }
@@ -49,7 +39,7 @@ namespace ParkingLot
         public string BackIndent()
         {
             string tabString = "";
-            for (int i = 0; i < indentNumber; i++)
+            for (int i = 0; i < IndentNumber; i++)
             {
                 tabString += "\t";
             }
