@@ -25,14 +25,20 @@ namespace ParkingLot
 
         public string Print(Reporter reporter)
         {
-            var report = new StringBuilder();
             reporter.Indent();
-            report.AppendLine(string.Format("{0}manager:",reporter.FormatString()));
+            var result = PrintContent(reporter);
+            reporter.Outdent();
+            return result;
+        }
+
+        private string PrintContent(Reporter reporter)
+        {
+            var report = new StringBuilder();
+            report.AppendLine(string.Format("{0}manager:", reporter.FormatString()));
             foreach (var parker in parkers)
             {
                 report.Append(parker.Print(reporter));
             }
-            reporter.Outdent();
             return report.ToString();
         }
     }

@@ -55,8 +55,8 @@ namespace ParkingLot
 
         public string Print(Reporter reporter)
         {
-            var report = new StringBuilder();
             reporter.Indent();
+            var report = new StringBuilder();
             report.AppendLine(String.Format("{0}parkinglot: {1}", reporter.FormatString(), AvailablePosition()));
             reporter.Outdent();
             return report.ToString();
