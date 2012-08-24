@@ -1,7 +1,4 @@
-﻿using System;
-using System.Text;
-
-namespace ParkingLot
+﻿namespace ParkingLot
 {
     public class Reporter
     {
@@ -14,18 +11,6 @@ namespace ParkingLot
         public int IndentNumber { get; private set; }
 
 
-        public string Print(Manager manager)
-        {
-            var report = new StringBuilder();
-            report.AppendLine(String.Format("{0}manager:", Indent()));
-
-            foreach (var parker in manager.GetParkers())
-            {
-                report.Append(parker.Print(new Reporter(IndentNumber + 1)));
-            }
-            return report.ToString();
-        }
-
         public string Indent()
         {
             string tabString = "";
@@ -35,7 +20,7 @@ namespace ParkingLot
             }
             return tabString;
         }
-
+            
         public string BackIndent()
         {
             string tabString = "";
