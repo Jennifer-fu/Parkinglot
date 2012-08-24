@@ -2,29 +2,22 @@
 {
     public class Reporter
     {
+        private int indentNumber = -1;
 
-        public Reporter(int indentNumber)
+        public void Indent()
         {
-            IndentNumber = indentNumber;
-        }
-
-        public int IndentNumber { get; private set; }
-
-
-        public string Indent()
-        {
-            string tabString = "";
-            for (int i = 0; i < IndentNumber; i++)
-            {
-                tabString += "\t";
-            }
-            return tabString;
+            indentNumber++;
         }
             
-        public string BackIndent()
+        public void Outdent()
         {
-            string tabString = "";
-            for (int i = 0; i < IndentNumber; i++)
+            indentNumber--;
+        }
+
+        public string FormatString()
+        {
+            var tabString = string.Empty;
+            for (var i = 0; i < indentNumber; i++)
             {
                 tabString += "\t";
             }

@@ -7,9 +7,9 @@ namespace ParkingLot
 {
     public class ParkingBoy : Parker
     {
-        private List<Parkinglot> parkinglots = new List<Parkinglot>();
+        private readonly List<Parkinglot> parkinglots = new List<Parkinglot>();
 
-        private ParkinglotChooser chooser;
+        private readonly ParkinglotChooser chooser;
 
         public ParkingBoy(ParkinglotChooser chooser)
         {
@@ -35,19 +35,14 @@ namespace ParkingLot
         public string Print(Reporter reporter)
         {
             var report = new StringBuilder();
-            report.Append(reporter.Indent());
-            report.Append("parkingboy:");
-            report.AppendLine();
-            foreach (var parkinglot in GetParkinglots())
+            reporter.Indent();
+            report.AppendLine(String.Format("{0}parkingboy:",reporter.FormatString()));
+            foreach (var parkinglot in parkinglots)
             {
-                report.Append(parkinglot.Print(new Reporter(reporter.IndentNumber + 1)));
+                report.Append(parkinglot.Print(reporter));
             }
+            reporter.Outdent();
             return report.ToString();
-        }
-
-        public List<Parkinglot> GetParkinglots()
-        {
-            return parkinglots;
         }
     }
 }

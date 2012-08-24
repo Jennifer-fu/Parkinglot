@@ -9,7 +9,7 @@ namespace ParkingLot
         public void parkinglot_should_print_its_avalibale_position()
         {
             var parkinglot = new Parkinglot(1);
-            var report = parkinglot.Print(new Reporter(0));
+            var report = parkinglot.Print(new Reporter());
 
             Assert.AreEqual("parkinglot: 1\r\n", report);
         }
@@ -19,7 +19,7 @@ namespace ParkingLot
         {
             var parkingBoy = new ParkingBoy(new AnyNotFull());
             parkingBoy.Manage(new Parkinglot(1));
-            var report = parkingBoy.Print(new Reporter(0));
+            var report = parkingBoy.Print(new Reporter());
 
             var expectedReport = "parkingboy:\r\n" +
                                  "	parkinglot: 1\r\n";
@@ -32,7 +32,7 @@ namespace ParkingLot
             var parkingBoy = new ParkingBoy(new AnyNotFull());
             parkingBoy.Manage(new Parkinglot(1));
             parkingBoy.Manage(new Parkinglot(2));
-            var report = parkingBoy.Print(new Reporter(0));
+            var report = parkingBoy.Print(new Reporter());
 
             var expectedReport = "parkingboy:\r\n" +
                                  "	parkinglot: 1\r\n" +
@@ -45,7 +45,7 @@ namespace ParkingLot
         {
             var manager = new Manager();
             manager.Manage(new Parkinglot(1));
-            var report = manager.Print(new Reporter(0));
+            var report = manager.Print(new Reporter());
 
             var expectedReport = "manager:\r\n" +
                                  "	parkinglot: 1\r\n";
@@ -58,7 +58,7 @@ namespace ParkingLot
             var manager = new Manager();
             manager.Manage(new Parkinglot(1));
             manager.Manage(new Parkinglot(2));
-            var report = manager.Print(new Reporter(0));
+            var report = manager.Print(new Reporter());
 
             var expectedReport = "manager:\r\n" +
                                  "	parkinglot: 1\r\n" +
@@ -79,7 +79,7 @@ namespace ParkingLot
             parkingBoy2.Manage(new Parkinglot(3));
             manager.Manage(parkingBoy2);
 
-            var report = manager.Print(new Reporter(0));
+            var report = manager.Print(new Reporter());
             var expectedReport = "manager:\r\n"
                                  + "	parkingboy:\r\n"
                                  + "		parkinglot: 1\r\n"
@@ -99,7 +99,7 @@ namespace ParkingLot
             parkingBoy.Manage(new Parkinglot(2));
             manager.Manage(parkingBoy);
 
-            var report = manager.Print(new Reporter(0));
+            var report = manager.Print(new Reporter());
             var expectedReport = "manager:\r\n"
                                  + "	parkinglot: 1\r\n"
                                  + "	parkingboy:\r\n"
@@ -122,7 +122,7 @@ namespace ParkingLot
             parkingBoy1.Manage(new Parkinglot(2));
             parkingBoy1.Manage(new Parkinglot(3));
             manager.Manage(parkingBoy1);
-            var report = manager.Print(new Reporter(0));
+            var report = manager.Print(new Reporter());
             var expectedReport = "manager:\r\n"
                                  + "	parkinglot: 1\r\n"
                                  + "	parkinglot: 2\r\n"
@@ -153,7 +153,7 @@ namespace ParkingLot
 
             manager.Manage(manager1);
             
-            var report = manager.Print(new Reporter(0));
+            var report = manager.Print(new Reporter());
             var expectedReport = "manager:\r\n"
                                  + "	manager:\r\n"
                                  + "		parkinglot: 1\r\n"
@@ -173,7 +173,7 @@ namespace ParkingLot
             manager.Manage(new Manager());
             manager.Manage(new Manager());
 
-            var report = manager.Print(new Reporter(0));
+            var report = manager.Print(new Reporter());
 
             var expectedReport = "manager:\r\n"
                                  + "	manager:\r\n"
@@ -198,7 +198,7 @@ namespace ParkingLot
             
             manager.Manage(new Parkinglot(3));
 
-            var report = manager.Print(new Reporter(0));
+            var report = manager.Print(new Reporter());
 
             var expectedReport = "manager:\r\n"
                                  + "	manager:\r\n"
