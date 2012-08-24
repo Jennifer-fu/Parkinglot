@@ -12,15 +12,10 @@ namespace ParkingLot
             this.indentNumber = indentNumber;
         }
 
-        public string Print(Parkinglot parkinglot)
-        {
-            return String.Format("{0}parkinglot: {1}\r\n", IndentString(), parkinglot.AvailablePosition());
-        }
-
         public string Print(ParkingBoy parkingBoy)
         {
             var report = new StringBuilder();
-            report.AppendLine(String.Format("{0}parkingboy:", IndentString()));
+            report.AppendLine(String.Format("{0}parkingboy:", Indent()));
 
             foreach (var parkinglot in parkingBoy.GetParkinglots())
             {
@@ -32,7 +27,7 @@ namespace ParkingLot
         public string Print(Manager manager)
         {
             var report = new StringBuilder();
-            report.AppendLine(String.Format("{0}manager:", IndentString()));
+            report.AppendLine(String.Format("{0}manager:", Indent()));
 
             foreach (var parker in manager.GetParkers())
             {
@@ -41,7 +36,17 @@ namespace ParkingLot
             return report.ToString();
         }
 
-        public string IndentString()
+        public string Indent()
+        {
+            string tabString = "";
+            for (int i = 0; i < indentNumber; i++)
+            {
+                tabString += "\t";
+            }
+            return tabString;
+        }
+
+        public string BackIndent()
         {
             string tabString = "";
             for (int i = 0; i < indentNumber; i++)

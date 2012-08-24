@@ -1,5 +1,6 @@
 using System;
 using System.Collections.Generic;
+using System.Text;
 
 namespace ParkingLot
 {
@@ -54,7 +55,11 @@ namespace ParkingLot
 
         public string Print(Reporter reporter)
         {
-            return reporter.Print(this);
+            var report = new StringBuilder();
+            report.Append(reporter.Indent());
+            report.Append(String.Format("parkinglot: {0}", AvailablePosition()));
+            report.AppendLine();
+            return report.ToString();
         }
     }
 }
